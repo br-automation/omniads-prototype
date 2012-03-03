@@ -1,0 +1,26 @@
+<h1>Ads</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td><%= ad.id %></td>
+        <td><%= link_to ad.title, ad_path(ad) %></td>
+        <td><%= ad.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_ad_path(ad), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', ad_path(ad), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_ad_path, :class => 'btn btn-primary' %>
