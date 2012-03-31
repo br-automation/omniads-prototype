@@ -1,4 +1,6 @@
 class AdsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /ads
   # GET /ads.json
   def index
@@ -25,6 +27,7 @@ class AdsController < ApplicationController
   # GET /ads/new.json
   def new
     @ad = Ad.new
+    @ad.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +44,7 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(params[:ad])
+    @ad.user = current_user
 
     respond_to do |format|
       if @ad.save

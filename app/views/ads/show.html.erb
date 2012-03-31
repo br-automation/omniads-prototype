@@ -12,6 +12,6 @@
 
 <div class="form-actions">
   <%= link_to 'Back', ads_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_ad_path(@ad), :class => 'btn' %>
-  <%= link_to 'Delete', ad_path(@ad), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to 'Edit', edit_ad_path(@ad), :class => 'btn' if can? :edit, @ad %>
+  <%= link_to 'Delete', ad_path(@ad), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' if can? :destroy, @ad %>
 </div>
