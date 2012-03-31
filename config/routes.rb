@@ -2,6 +2,29 @@ Omniads::Application.routes.draw do
   resources :ads
 
   get "home/index"
+  
+  devise_for :users,
+    {
+      path: '',
+      controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations',
+        passwords: 'users/passwords'
+      },
+      path_names: {
+        sign_in: 'login',
+        sign_out: 'logout',
+        sign_up: 'registration',
+        password: 'amnesia',
+        confirmation: 'verification',
+        unlock: 'unblock',
+        registration: 'account'
+      }
+    }
+
+  devise_scope :user do
+    get '/logout' => 'users/sessions#destroy'
+  end
 
   root to: 'home#index'
 
