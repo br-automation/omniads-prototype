@@ -3,6 +3,7 @@ class CreateAds < ActiveRecord::Migration
     create_table :ads do |t|
       t.string :title
       t.text :description
+      t.timestamp :atCreated
 
       t.timestamps
     end
